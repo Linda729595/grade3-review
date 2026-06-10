@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6257e7">
+  <title>期末冲刺站 - 三年级下册</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sky-decoration sky-one"></div>
+  <div class="sky-decoration sky-two"></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" data-page="home" aria-label="返回首页">
+        <span class="brand-mark">✓</span>
+        <span>
+          <strong>期末冲刺站</strong>
+          <small>三年级下册</small>
+        </span>
+      </button>
+      <div class="top-actions">
+        <div class="streak-badge" title="连续学习天数">
+          <span>☀</span>
+          <strong id="streakCount">1</strong> 天
+        </div>
+        <button class="sound-button" id="soundButton" aria-label="切换声音">♫</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="page active" id="homePage">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow">距离期末，更近一步</span>
+            <h1>今天也要<br><em>认真复习呀！</em></h1>
+            <p>每天进步一点点，考试时就能信心满满。</p>
+            <button class="primary-button" id="startReview">开始今日复习 <span>→</span></button>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="pencil">✎</div>
+            <div class="book">
+              <div class="book-page left-page">
+                <span>好</span><i></i><i></i>
+              </div>
+              <div class="book-page right-page">
+                <span>学</span><i></i><i></i>
+              </div>
+            </div>
+            <span class="spark spark-one">✦</span>
+            <span class="spark spark-two">★</span>
+            <span class="spark spark-three">●</span>
+          </div>
+        </div>
+
+        <section class="countdown-panel">
+          <div class="countdown-main">
+            <span class="countdown-number" id="daysLeft">14</span>
+            <div>
+              <span class="eyebrow">DAYS TO GO</span>
+              <h2>距离期末考试还有 <b id="daysLeftText">14</b> 天</h2>
+              <p id="countdownMessage">稳稳复习，每一天都算数。</p>
+            </div>
+          </div>
+          <div class="countdown-progress">
+            <div class="countdown-label"><span>14 天冲刺进度</span><strong id="planProgressText">第 1 天</strong></div>
+            <div class="progress-track"><span id="planProgress"></span></div>
+          </div>
+        </section>
+
+        <section class="daily-panel">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">TODAY'S PLAN</span>
+              <h2>今日复习计划</h2>
+            </div>
+            <span class="progress-label"><b id="todayDone">0</b>/4 已完成</span>
+          </div>
+          <div class="progress-track"><span id="todayProgress"></span></div>
+          <div class="daily-tasks" id="dailyTasks"></div>
+        </section>
+
+        <section class="plan-section">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">14-DAY PLAN</span>
+              <h2>十四天复习路线</h2>
+            </div>
+            <span class="progress-label">前 10 天夯实基础，后 4 天综合冲刺</span>
+          </div>
+          <div class="plan-grid" id="planGrid"></div>
+        </section>
+
+        <section class="subject-section">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">SUBJECTS</span>
+              <h2>选择复习科目</h2>
+            </div>
+            <button class="text-button" id="randomChallenge">随机闯关 <span>↗</span></button>
+          </div>
+          <div class="subject-grid" id="subjectGrid"></div>
+        </section>
+
+        <section class="tip-card">
+          <div class="tip-icon">★</div>
+          <div>
+            <strong>复习小秘诀</strong>
+            <p>先回忆，再看答案；做错的题隔一天再做一次，记得更牢！</p>
+          </div>
+        </section>
+      </section>
+
+      <section class="page" id="subjectPage">
+        <button class="back-button" data-page="home">← 返回首页</button>
+        <div class="subject-banner" id="subjectBanner"></div>
+        <div class="subject-layout">
+          <section class="knowledge-panel">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">KNOWLEDGE</span>
+                <h2>知识点清单</h2>
+              </div>
+              <span class="progress-label" id="knowledgeProgress">0/0</span>
+            </div>
+            <div class="knowledge-list" id="knowledgeList"></div>
+          </section>
+          <aside class="challenge-card">
+            <span class="challenge-icon">⚡</span>
+            <h2>准备好了吗？</h2>
+            <p>完成 5 道小题，看看知识掌握得怎么样。</p>
+            <button class="primary-button full-button" id="subjectQuizButton">开始答题</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="quizPage">
+        <div class="quiz-topbar">
+          <button class="back-button" id="quitQuiz">← 退出答题</button>
+          <span class="quiz-subject" id="quizSubject"></span>
+          <span class="quiz-counter" id="quizCounter">1 / 5</span>
+        </div>
+        <div class="quiz-shell">
+          <div class="quiz-progress"><span id="quizProgress"></span></div>
+          <div class="question-card">
+            <span class="question-type" id="questionType">单项选择</span>
+            <h2 id="questionText"></h2>
+            <div class="options" id="options"></div>
+            <div class="feedback hidden" id="feedback"></div>
+            <button class="primary-button next-button hidden" id="nextQuestion">下一题 →</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="resultPage">
+        <div class="result-card">
+          <div class="result-burst">★</div>
+          <span class="eyebrow">CHALLENGE COMPLETE</span>
+          <h1 id="resultTitle">太棒啦！</h1>
+          <div class="score-ring"><strong id="resultScore">5</strong><span>/ 5</span></div>
+          <p id="resultMessage"></p>
+          <div class="result-actions">
+            <button class="secondary-button" data-page="home">返回首页</button>
+            <button class="primary-button" id="retryQuiz">再试一次</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="mistakesPage">
+        <div class="page-heading">
+          <div>
+            <span class="eyebrow">MY NOTEBOOK</span>
+            <h1>我的错题本</h1>
+          </div>
+          <button class="secondary-button" id="clearMistakes">清空错题</button>
+        </div>
+        <div class="mistakes-list" id="mistakesList"></div>
+      </section>
+
+      <section class="page" id="progressPage">
+        <div class="page-heading">
+          <div>
+            <span class="eyebrow">MY PROGRESS</span>
+            <h1>学习成果</h1>
+          </div>
+        </div>
+        <div class="stats-grid" id="statsGrid"></div>
+        <section class="knowledge-panel progress-panel">
+          <h2>各科复习进度</h2>
+          <div id="subjectProgressList"></div>
+        </section>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主要导航">
+      <button class="nav-item active" data-page="home"><span>⌂</span>首页</button>
+      <button class="nav-item" data-page="progress"><span>▥</span>进度</button>
+      <button class="nav-item" data-page="mistakes"><span>✎</span>错题本</button>
+    </nav>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
